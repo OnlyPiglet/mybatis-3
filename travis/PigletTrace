@@ -1,0 +1,1 @@
+件jaxp.properties,并写上如下内容javax.xml.accessExternalDTD = all在jdk的安装路径下的jre\lib下（我的路径为/usr/local/jdk1.8.0_151/jre/lib），添加一个属性文
