@@ -1,0 +1,21 @@
+jdk/jre/lib/
+jaxp.properties
+javax.xml.accessExternalDTD = all
+
+解释下面是我百度出来，别人总结的resultType可用类型
+resultType:
+1、基本类型 ：resultType=基本类型
+2、List类型： resultType=List中元素的类型
+3、Map类型 单条记录：resultType =map
+多条记录：resultType =Map中value的类型
+1、如果返回值为基本类型，则resultType=基本类型，比如resultType=java.lang.Integer,那sql语句中只返回一个int类型数据，通常用于统计数量
+2、如果返回值为list类型，则resultType=List中元素的类型，比如你需要返回一个List类型的数据，那么这里resultType=”java.lang.String”，如果需要返回一个实体类，那么resultType=”com.pjf.mybatis.car”以此类推。
+3、如果返回值为map单条类型，比如{username=”张三”}，那么resultType =”map”。
+4、如果返回值为map多条记录，比如{res=”实体类”}，实体类就是你要请求的数据实体类，那么resultType =Map中value的类型，比如resultType=”com.pjf.mybatis.car”
+
+返回多条记录的map时，key为任意一属性，值为对象类型，不过key需要通过@MapKey(“hotelName”)指定对象中一个属性名为key
+
+`public interface HotelMapper {
+    @MapKey("hotelName")
+    public Map<String, Hotel> getHotel(Integer i);
+}`
