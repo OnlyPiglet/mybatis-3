@@ -45,7 +45,10 @@ public class SqlSessionManager implements SqlSessionFactory, SqlSession {
   private final ThreadLocal<SqlSession> localSqlSession = new ThreadLocal<>();
 
   private SqlSessionManager(SqlSessionFactory sqlSessionFactory) {
+
+    //sqlSessionFactory 获取 session 并添加到本地线程localSqlSession中
     this.sqlSessionFactory = sqlSessionFactory;
+    //jdk 动态代理 生成sqlSession 的动态代理对象，
     this.sqlSessionProxy = (SqlSession) Proxy.newProxyInstance(
         SqlSessionFactory.class.getClassLoader(),
         new Class[]{SqlSession.class},

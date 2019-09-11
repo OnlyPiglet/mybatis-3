@@ -3,6 +3,7 @@ package com.onlypiglet.test.FirstTest;
 
 import com.onlypiglet.debug.entity.User;
 import com.onlypiglet.debug.grammer.InnerClassField;
+import com.onlypiglet.debug.grammer.thisAfterClass;
 import com.onlypiglet.debug.mapper.UserMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -65,6 +66,20 @@ public class MyTest {
 
     System.out.println(InnerClassField.InnerTest.ic);
     System.out.println(InnerClassField.InnerTest.ic);
+
+  }
+
+
+  @Test
+  public void test(){
+
+    thisAfterClass tac = new thisAfterClass();
+    tac.run();
+
+    System.out.println("-------------");
+
+    thisAfterClass.InnerClass tacic = tac.new InnerClass();
+    tacic.run();
 
   }
 
