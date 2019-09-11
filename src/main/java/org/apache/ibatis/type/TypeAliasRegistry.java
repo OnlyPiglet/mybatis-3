@@ -111,8 +111,11 @@ public class TypeAliasRegistry {
       String key = string.toLowerCase(Locale.ENGLISH);
       Class<T> value;
       if (typeAliases.containsKey(key)) {
+        //小吴嘿
+        //从默认的初始化类中中
         value = (Class<T>) typeAliases.get(key);
       } else {
+        //加载其他地方的类中查找对应的类 TODO
         value = (Class<T>) Resources.classForName(string);
       }
       return value;

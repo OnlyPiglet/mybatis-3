@@ -2,6 +2,7 @@ package com.onlypiglet.test.FirstTest;
 
 
 import com.onlypiglet.debug.entity.User;
+import com.onlypiglet.debug.grammer.InnerClassField;
 import com.onlypiglet.debug.mapper.UserMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -12,6 +13,7 @@ import org.junit.Test;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.Properties;
 
 /**
  * @ProjectName: mybatis-3.5.0
@@ -27,6 +29,7 @@ public class MyTest {
   @Test
   public void FirstTest() throws IOException {
 
+
     String resource = "mybatis-config.xml";
     InputStream inputStream = Resources.getResourceAsStream(resource);
     SqlSessionFactory sqlSessionFactory =
@@ -37,5 +40,32 @@ public class MyTest {
 
   }
 
+
+  @Test
+  public void testInsertUser()throws IOException{
+    String resource = "mybatis-config.xml";
+    InputStream inputStream = Resources.getResourceAsStream(resource);
+    SqlSessionFactory sqlSessionFactory =
+      new SqlSessionFactoryBuilder().build(inputStream);
+
+    SqlSession sqlsession = sqlSessionFactory.openSession(true);
+
+
+    User user = new User();
+    user.setId("4");
+    user.setPassword("123");
+    user.setUsername("test");
+    sqlsession.getMapper(UserMapper.class).insertUser(user);
+  }
+
+
+  @Test
+  public void testInnerClassField(){
+
+
+    System.out.println(InnerClassField.InnerTest.ic);
+    System.out.println(InnerClassField.InnerTest.ic);
+
+  }
 
 }

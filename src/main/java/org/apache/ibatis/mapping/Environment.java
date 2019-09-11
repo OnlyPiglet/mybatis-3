@@ -19,9 +19,12 @@ import javax.sql.DataSource;
 
 import org.apache.ibatis.transaction.TransactionFactory;
 
+
 /**
  * @author Clinton Begin
  */
+//小吴嘿
+//Environment 存放了 数据库的上下文 如 事务工厂 数据源 ，事务工厂中存放了
 public final class Environment {
   private final String id;
   private final TransactionFactory transactionFactory;

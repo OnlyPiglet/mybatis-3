@@ -132,6 +132,7 @@ public class JdbcTransaction implements Transaction {
   }
 
   protected void openConnection() throws SQLException {
+    //为什么这里需要主动判断 提高效率吗》 TODO
     if (log.isDebugEnabled()) {
       log.debug("Opening JDBC Connection");
     }
