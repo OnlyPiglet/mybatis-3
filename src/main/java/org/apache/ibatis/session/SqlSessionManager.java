@@ -34,7 +34,8 @@ import org.apache.ibatis.reflection.ExceptionUtil;
  */
 
 //小吴嘿
-// 实现对应功能接口，以便对于调用发实现透明化实现，同时 TODO
+// 实现对应功能接口，以便对于调用发实现透明化实现
+  //但是没有找到是在哪里使用了此接口 应该是不用了 TODO
 public class SqlSessionManager implements SqlSessionFactory, SqlSession {
 
   private final SqlSessionFactory sqlSessionFactory;

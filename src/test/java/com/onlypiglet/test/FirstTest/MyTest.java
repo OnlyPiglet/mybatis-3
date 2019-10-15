@@ -38,6 +38,8 @@ public class MyTest {
     SqlSession sqlsession = sqlSessionFactory.openSession();
     List<User> users = sqlsession.getMapper(UserMapper.class).selectUsers();
     users.stream().forEach(System.out::println);
+    List<User> users1 = sqlsession.getMapper(UserMapper.class).selectUsers();
+    users1.stream().forEach(System.out::println);
 
   }
 

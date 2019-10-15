@@ -201,6 +201,7 @@ public class ClassLoaderWrapper {
 
   }
 
+  //resource 的查询路径 1. 传入进来的classloader 2. 默认的classloader 3. 当前线程上下文所在的classloader 4.当前classloaderWrapper 对象的classloader 5.系统classloader //TODO
   ClassLoader[] getClassLoaders(ClassLoader classLoader) {
     return new ClassLoader[]{
         classLoader,
