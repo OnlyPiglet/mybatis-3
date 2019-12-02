@@ -5,6 +5,7 @@ import com.onlypiglet.debug.entity.User;
 import com.onlypiglet.debug.grammer.InnerClassField;
 import com.onlypiglet.debug.grammer.thisAfterClass;
 import com.onlypiglet.debug.mapper.UserMapper;
+import com.onlypiglet.debug.plugin.ExamplePlugin;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -35,11 +36,12 @@ public class MyTest {
     InputStream inputStream = Resources.getResourceAsStream(resource);
     SqlSessionFactory sqlSessionFactory =
       new SqlSessionFactoryBuilder().build(inputStream);
+    sqlSessionFactory.getConfiguration().addInterceptor(new ExamplePlugin());
     SqlSession sqlsession = sqlSessionFactory.openSession();
-    List<User> users = sqlsession.getMapper(UserMapper.class).selectUsers();
+    UserMapper usermapper = sqlsession.getMapper(UserMapper.class);
+
+    List<User> users = usermapper.selectUsers();
     users.stream().forEach(System.out::println);
-    List<User> users1 = sqlsession.getMapper(UserMapper.class).selectUsers();
-    users1.stream().forEach(System.out::println);
 
   }
 

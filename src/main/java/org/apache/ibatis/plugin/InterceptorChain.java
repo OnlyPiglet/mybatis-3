@@ -26,7 +26,7 @@ public class InterceptorChain {
 
   private final List<Interceptor> interceptors = new ArrayList<>();
 
-  public Object pluginAll(Object target) {
+  public Object pluginAll(Object target) { // 循环代理所有插件
     for (Interceptor interceptor : interceptors) {
       target = interceptor.plugin(target);
     }
